@@ -38,5 +38,4 @@
         app:layout_constraintBottom_toTopOf="@id/vote_button" />
 
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,12 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentManagerNonConfig;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Adapter;
 import android.widget.Button;
 
 import static android.view.View.GONE;
@@ -26,7 +26,10 @@ public class VotingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voting);
         recyclerView=findViewById(R.id.vote_recyclerView);
-
+        recyclerView.setLayoutManager(new GridLayoutManager(this,5));
+        String[] data = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+        adapter = new Adapter(this,data);
+        recyclerView.setAdapter(adapter);
         votebutton=findViewById(R.id.vote_button);
         votebutton.setOnClickListener(new View.OnClickListener() {
             @Override
