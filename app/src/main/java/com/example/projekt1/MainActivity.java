@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
                 String name;
                 name =username.getText().toString();
                 intent.putExtra("username",name);
-                Log.d("user",name);
+                Log.d("aaaaaaaaaa",name);
                 startActivity(intent);
             }
         });
