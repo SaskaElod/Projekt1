@@ -1,6 +1,9 @@
 package com.example.projekt1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentManagerNonConfig;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -8,6 +11,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Button;
+
+import static android.view.View.GONE;
 
 public class VotingActivity extends AppCompatActivity {
 
@@ -29,7 +34,10 @@ public class VotingActivity extends AppCompatActivity {
         votebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                votebutton.setVisibility(GONE);
+                FragmentManager fm=getSupportFragmentManager();
+                ScoresFragment fragment=new ScoresFragment();
+                fm.beginTransaction().replace(R.id.container,fragment).commit();
             }
         });
     }
