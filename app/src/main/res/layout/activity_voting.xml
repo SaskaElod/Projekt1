@@ -36,10 +36,5 @@
         app:layout_constraintTop_toBottomOf="@+id/vote_recyclerView"
         app:layout_constraintBottom_toTopOf="@id/vote_button" />
 
-    <fragment
-        android:id="@+id/fragment_content_1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-    </fragment>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

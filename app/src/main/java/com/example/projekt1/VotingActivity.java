@@ -17,7 +17,7 @@ public class VotingActivity extends AppCompatActivity {
         votebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                
             }
         });
     }
