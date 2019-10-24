@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/container"
     tools:context=".VotingActivity">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -35,4 +36,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vote_recyclerView"
         app:layout_constraintBottom_toTopOf="@id/vote_button" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
