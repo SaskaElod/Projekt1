@@ -17,15 +17,16 @@ import android.view.ViewGroup;
  */
 public class ScoresFragment extends Fragment {
 
-    String score;
+    String score,name;
     public ScoresFragment() {
         // Required empty public constructor
     }
 
-    public static ScoresFragment newInstance(String text){
+    public static ScoresFragment newInstance(String text,String name){
         ScoresFragment scoresFragment=new ScoresFragment();
         Bundle data = new Bundle();
-        data.putString("Vote",text);
+        data.putString("vote",text);
+        data.putString("username",name);
         scoresFragment.setArguments(data);
         return scoresFragment;
     }
@@ -33,8 +34,10 @@ public class ScoresFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        score=getArguments().getString("Vote");
+        score=getArguments().getString("vote");
+        name=getArguments().getString("username");
         Log.d("aaaaaaaaaa",score);
+        Log.d("bbbbbbbbb",name);
     }
 
     @Override
