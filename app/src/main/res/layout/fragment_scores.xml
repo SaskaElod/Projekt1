@@ -17,13 +17,24 @@
         android:text="Scores"
         android:textSize="30dp"
         android:textStyle="bold"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorAccent"
 
         />
+
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="318dp"
+        android:layout_height="445dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/my_recylerView"
+        />
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="500dp"
+
+        android:text="Back"/>
+
 
 </RelativeLayout>

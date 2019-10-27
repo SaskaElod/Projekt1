@@ -41,4 +41,6 @@ public class VotingActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }
