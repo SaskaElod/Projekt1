@@ -34,7 +34,7 @@ public class ScoresFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         score=getArguments().getString("Vote");
-        Log.d("aaaaaaaaaa",score);
+        Log.d("bbbbbbbbbbbbbbb",score);
     }
 
     @Override
