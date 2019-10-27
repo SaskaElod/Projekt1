@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Button;
@@ -18,8 +19,9 @@ public class VotingActivity extends AppCompatActivity {
 
     Button votebutton;
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
+    private Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
+    String vote;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +33,18 @@ public class VotingActivity extends AppCompatActivity {
         adapter = new Adapter(this,data);
         recyclerView.setAdapter(adapter);
         votebutton=findViewById(R.id.vote_button);
+        adapter.setClickListener(new Adapter.ItemClickListener() {
+            @Override
+            public void onItemClick(String text) {
+                vote=text;
+            }
+        });
         votebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 votebutton.setVisibility(GONE);
                 FragmentManager fm=getSupportFragmentManager();
-                ScoresFragment fragment=new ScoresFragment();
+                ScoresFragment fragment=ScoresFragment.newInstance(vote);
                 fm.beginTransaction().replace(R.id.container,fragment).commit();
             }
         });

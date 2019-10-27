@@ -1,12 +1,12 @@
 package com.example.projekt1;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,25 +17,30 @@ import android.view.ViewGroup;
  */
 public class ScoresFragment extends Fragment {
 
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
-    private RecyclerView.LayoutManager layoutManager;
-    private DatabaseFull db;
-
+    String score;
     public ScoresFragment() {
         // Required empty public constructor
     }
 
+    public static ScoresFragment newInstance(String text){
+        ScoresFragment scoresFragment=new ScoresFragment();
+        Bundle data = new Bundle();
+        data.putString("Vote",text);
+        scoresFragment.setArguments(data);
+        return scoresFragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        score=getArguments().getString("Vote");
+        Log.d("aaaaaaaaaa",score);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-       // recyclerView=recyclerView.findViewById(R.id.my_recylerView);
-      //  recyclerView.setHasFixedSize(true);
-
-        //recyclerView.setLayoutManager(layoutManager);
-
-
+        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_scores, container, false);
     }
 
