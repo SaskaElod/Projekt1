@@ -21,7 +21,7 @@ public class VotingActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    String vote;
+    String vote,name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,8 @@ public class VotingActivity extends AppCompatActivity {
         String[] data = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
         adapter = new Adapter(this,data);
         recyclerView.setAdapter(adapter);
+        name=getIntent().getExtras().getString("username");
+        //Log.d("aaaa",name);
         votebutton=findViewById(R.id.vote_button);
         adapter.setClickListener(new Adapter.ItemClickListener() {
             @Override
@@ -44,7 +46,7 @@ public class VotingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 votebutton.setVisibility(GONE);
                 FragmentManager fm=getSupportFragmentManager();
-                ScoresFragment fragment=ScoresFragment.newInstance(vote);
+                ScoresFragment fragment=ScoresFragment.newInstance(vote,name);
                 fm.beginTransaction().replace(R.id.container,fragment).commit();
             }
         });
