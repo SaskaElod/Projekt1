@@ -13,9 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class ScoresFragment extends Fragment {
 
     private DatabaseFull db;
@@ -54,5 +52,7 @@ public class ScoresFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_scores, container, false);
     }
+
+
 
 }

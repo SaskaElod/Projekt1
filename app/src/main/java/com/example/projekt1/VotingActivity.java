@@ -15,9 +15,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static android.app.PendingIntent.getActivity;
 import static android.view.View.GONE;
 
 public class VotingActivity extends AppCompatActivity {
+
     private DatabaseFull db;
     Button votebutton;
     private RecyclerView recyclerView;
@@ -50,7 +52,7 @@ public class VotingActivity extends AppCompatActivity {
         votebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (vote==null)
+                if (vote!=null)
                 {
                     Toast.makeText(VotingActivity.this, "You need to vote!", Toast.LENGTH_SHORT).show();
                 }
@@ -66,4 +68,16 @@ public class VotingActivity extends AppCompatActivity {
         });
 
     }
+
+    public void addData(){
+        votebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                votebutton.setVisibility(GONE);
+
+            }
+        });
+    }
+
+
 }
