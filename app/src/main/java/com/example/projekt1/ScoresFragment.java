@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,7 +18,12 @@ import android.view.ViewGroup;
  */
 public class ScoresFragment extends Fragment {
 
+    private DatabaseFull db;
     String score,name;
+    private RecyclerView recyclerView;
+    private MyRecyclerViewAdapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
+
     public ScoresFragment() {
         // Required empty public constructor
     }
@@ -36,8 +42,10 @@ public class ScoresFragment extends Fragment {
         super.onCreate(savedInstanceState);
         score=getArguments().getString("vote");
         name=getArguments().getString("username");
-        Log.d("aaaaaaaaaa",score);
-        Log.d("bbbbbbbbb",name);
+        db=new DatabaseFull(getContext());
+        //Log.d("aaaaaaaaaa",score);
+        //Log.d("bbbbbbbbb",name);
+
     }
 
     @Override

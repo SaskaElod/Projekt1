@@ -12,16 +12,19 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import static android.view.View.GONE;
 
 public class VotingActivity extends AppCompatActivity {
-
+    private DatabaseFull db;
     Button votebutton;
     private RecyclerView recyclerView;
     private Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    String vote,name;
+    String vote,name,question;
+    TextView questiontextview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,9 @@ public class VotingActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         name=getIntent().getExtras().getString("username");
         //Log.d("aaaa",name);
+        questiontextview = findViewById(R.id.vote_textView);
+        question = questiontextview.getText().toString();
+        db = new DatabaseFull(this);
         votebutton=findViewById(R.id.vote_button);
         adapter.setClickListener(new Adapter.ItemClickListener() {
             @Override
@@ -44,11 +50,20 @@ public class VotingActivity extends AppCompatActivity {
         votebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (vote==null)
+                {
+                    Toast.makeText(VotingActivity.this, "You need to vote!", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
                 votebutton.setVisibility(GONE);
+                db.insert(name,question,vote);
                 FragmentManager fm=getSupportFragmentManager();
                 ScoresFragment fragment=ScoresFragment.newInstance(vote,name);
                 fm.beginTransaction().replace(R.id.container,fragment).commit();
+                }
             }
         });
+
     }
 }

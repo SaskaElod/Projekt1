@@ -8,12 +8,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     Button loginbutton;
     EditText username;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,11 +24,17 @@ public class MainActivity extends AppCompatActivity {
         loginbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name;
-                name =username.getText().toString();
-                intent.putExtra("username",name);
-                Log.d("aaaaaaaaaa",name);
-                startActivity(intent);
+                String name=null;
+                name = username.getText().toString();
+                //Log.d("aaaaaaaaaa",name);
+                if(name==null)
+                {
+                    Toast.makeText(MainActivity.this, "Need to write username!", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    intent.putExtra("username", name);
+                    startActivity(intent);
+                }
             }
         });
     }

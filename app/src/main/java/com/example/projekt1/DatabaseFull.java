@@ -31,4 +31,5 @@ public class DatabaseFull extends SQLiteOpenHelper {
         if(ins==-1)return true;
         else return false;
     }
+
 }
