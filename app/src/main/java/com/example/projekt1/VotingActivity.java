@@ -13,10 +13,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Button;
 
+import static android.app.PendingIntent.getActivity;
 import static android.view.View.GONE;
 
 public class VotingActivity extends AppCompatActivity {
 
+    DatabaseFull myDB;
     Button votebutton;
     private RecyclerView recyclerView;
     private Adapter adapter;
@@ -48,6 +50,16 @@ public class VotingActivity extends AppCompatActivity {
                 FragmentManager fm=getSupportFragmentManager();
                 ScoresFragment fragment=ScoresFragment.newInstance(vote,name);
                 fm.beginTransaction().replace(R.id.container,fragment).commit();
+            }
+        });
+    }
+
+    public void addData(){
+        votebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                votebutton.setVisibility(GONE);
+
             }
         });
     }

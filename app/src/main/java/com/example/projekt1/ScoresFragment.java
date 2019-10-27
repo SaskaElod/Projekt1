@@ -12,9 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class ScoresFragment extends Fragment {
 
     String score,name;
@@ -36,8 +34,8 @@ public class ScoresFragment extends Fragment {
         super.onCreate(savedInstanceState);
         score=getArguments().getString("vote");
         name=getArguments().getString("username");
-        Log.d("aaaaaaaaaa",score);
-        Log.d("bbbbbbbbb",name);
+        //Log.d("aaaaaaaaaa",score);
+        //Log.d("bbbbbbbbb",name);
     }
 
     @Override
@@ -46,5 +44,7 @@ public class ScoresFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_scores, container, false);
     }
+
+
 
 }
