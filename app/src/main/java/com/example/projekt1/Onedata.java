@@ -19,6 +19,10 @@ public class Onedata {
 
    }
 
+    public Onedata() {
+
+    }
+
     public int getid() {
         return id;
     }
