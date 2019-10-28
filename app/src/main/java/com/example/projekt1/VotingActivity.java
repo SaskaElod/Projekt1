@@ -59,6 +59,7 @@ public class VotingActivity extends AppCompatActivity {
                 else
                 {
                 votebutton.setVisibility(GONE);
+                question = questiontextview.getText().toString();
                 db.insert(name,question,vote);
                 FragmentManager fm=getSupportFragmentManager();
                 ScoresFragment fragment=ScoresFragment.newInstance(vote,name);

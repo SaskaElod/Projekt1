@@ -41,7 +41,7 @@ public class DatabaseFull extends SQLiteOpenHelper {
         contentValues.put(COLUMN2,username);
         contentValues.put(COLUMN3,questname);
         contentValues.put(COLUMN4,answer);
-        long ins=db.insert("user",null,contentValues);
+        long ins=db.insert("Users.db",null,contentValues);
         if(ins==-1)return true;
         else return false;
     }
