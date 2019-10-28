@@ -49,7 +49,7 @@ public class ScoresFragment extends Fragment {
         //recyclerView.findViewById(R.id.recyclerviewscores);
         //recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         //db=new DatabaseFull(getContext());
-        //datas=db.getAllData();
+       // datas=db.getAllData();
         //adapter=new MyRecyclerViewAdapter(this,datas);
         //Log.d("aaaaaaaaaa",datas);
         //Log.d("bbbbbbbbb",name);

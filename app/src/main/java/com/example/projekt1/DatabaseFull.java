@@ -12,69 +12,75 @@ import java.util.List;
 
 public class DatabaseFull extends SQLiteOpenHelper {
 
-    public static final  String DATABAS_NAME="Users.db";
-    public static final String TABLE_NAME="users_table";
-    public static final String COLUMN1="ID";
-    public static final String COLUMN2="username";
-    public static final String COLUMN3="questname";
-    public static final String COLUMN4="answer";
+    private static final String DATABASE_NAME = "Users.db";;
+    private static  final String TABLE_NAME="userdata";
+    private static final String COLUMN_ID="id";
+    private static  final String COLUMN_NAME="name";
+    private static final String COLUMN_QUESTION="quest";
+    private static final String  COLUMN_ANSWER="answer";
+
+
+    SQLiteDatabase database;
 
 
 
-    public DatabaseFull (Context context){
-        super(context,"Users.db",null,1);
+
+    public DatabaseFull(Context context){
+        super(context,DATABASE_NAME,null,1);
+        database=getWritableDatabase();
+
     }
     @Override
-    public void onCreate (SQLiteDatabase db)
+    public void onCreate(SQLiteDatabase db)
     {
-        db.execSQL ("Create table users_table (ID INTEGER PRIMARY KEY AUTOINCREMENT, username text PRIMARY KEY, questname text, answer text)");
+        db.execSQL("CREATE TABLE " + TABLE_NAME+ "  ( "+ COLUMN_ID+" INTEGER PRIMARY KEY AUTOINCREMENT , "+ COLUMN_NAME + " TEXT ,"+ COLUMN_QUESTION+ " TEXT ,"+ COLUMN_ANSWER+ " TEXT "+")");
     }
     @Override
-    public void onUpgrade (SQLiteDatabase db,int OldVersion,int newVersion){
-        db.execSQL ("drop table if exists users_table");
-        this.onCreate(db);
+    public void onUpgrade(SQLiteDatabase db,int OldVersion,int newVersion){
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(db);
     }
 
-    public boolean insert (String username,String questname,String answer){
+    public boolean insert(String name,String question,String point){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
-        contentValues.put(COLUMN2,username);
-        contentValues.put(COLUMN3,questname);
-        contentValues.put(COLUMN4,answer);
-        long ins=db.insert("users_table",null,contentValues);
+        contentValues.put(Onedata.name,name);
+        contentValues.put(Onedata.question,question);
+        contentValues.put(Onedata.point,point);
+        long ins=db.insert(Onedata.TABLE_NAME,null,contentValues);
         if(ins==-1)return true;
         else return false;
     }
-    public Onedata getData (long id) {
+    public Onedata getData(long id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(Onedata.name,
-                new String[]{Onedata.question, Onedata.point},
-                Onedata.question + "=?",
+        Cursor cursor = db.query(Onedata.TABLE_NAME,
+                new String[]{Onedata.name, Onedata.name},
+                Onedata.name + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
         if (cursor != null) {
             cursor.moveToFirst();
         }
-        Onedata hobbie = new Onedata(
-                cursor.getInt(cursor.getColumnIndex(Onedata.question)),
-                cursor.getString(cursor.getColumnIndex(Onedata.point)));
+        Onedata dates = new Onedata(
+                cursor.getInt(cursor.getColumnIndex(Onedata.name)),
+                cursor.getString(cursor.getColumnIndex(Onedata.name)));
 
         cursor.close();
-        return hobbie;
+        return dates;
     }
     public List<Onedata> getAllData() {
-        List<Onedata> hobbies = new ArrayList<>();
-        String selectQuery = "SELECT * FROM " + Onedata.name;
+        List<Onedata> Dates = new ArrayList<>();
+        String selectQuery = "SELECT * FROM " + Onedata.TABLE_NAME;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {
                 Onedata dates = new Onedata();
-                dates.setId(cursor.getInt(cursor.getColumnIndex(Onedata.question)));
-                dates.setData(cursor.getString(cursor.getColumnIndex(Onedata.point)));
-                hobbies.add(dates);
+                dates.setId(cursor.getInt(cursor.getColumnIndex(Onedata.name)));
+                dates.setData(cursor.getString(cursor.getColumnIndex(Onedata.name)));
+                Dates.add(dates);
             } while (cursor.moveToNext());
         }
         db.close();
-        return hobbies;
+        return Dates;
     }
 }

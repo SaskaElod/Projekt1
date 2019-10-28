@@ -38,7 +38,7 @@ public class VotingActivity extends AppCompatActivity {
         adapter = new Adapter(this,data);
         recyclerView.setAdapter(adapter);
         name=getIntent().getExtras().getString("username");
-        //Log.d("aaaa",name);
+        Log.d("aaaaaa",name);
         questiontextview = findViewById(R.id.vote_textView);
         db = new DatabaseFull(this);
         votebutton=findViewById(R.id.vote_button);
@@ -46,7 +46,7 @@ public class VotingActivity extends AppCompatActivity {
             @Override
             public void onItemClick(String text) {
                 vote=text;
-                Log.d("aaaaaaaa",vote);
+                Log.d("cccccc",vote);
             }
         });
         votebutton.setOnClickListener(new View.OnClickListener() {
@@ -60,10 +60,10 @@ public class VotingActivity extends AppCompatActivity {
                 {
                 votebutton.setVisibility(GONE);
                 question = questiontextview.getText().toString();
-//                Log.d("aaaaaaaa",name);
-//                Log.d("aaaaaaaa",question);
-                //Log.d("aaaaaaaa",vote);
-                db.insert(name,question,vote);
+                Log.d("aaaaaaaa",name);
+                Log.d("aaaaaaaa",question);
+                Log.d("aaaaaaaa",vote);
+                //db.insert(name,question,vote);
                 FragmentManager fm=getSupportFragmentManager();
                 ScoresFragment fragment=ScoresFragment.newInstance(vote,name);
                 fm.beginTransaction().replace(R.id.container,fragment).commit();
