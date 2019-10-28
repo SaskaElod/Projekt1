@@ -25,7 +25,7 @@ public class VotingActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    String vote,name,question;
+    String vote="",name,question;
     TextView questiontextview;
 
     @Override
@@ -38,21 +38,21 @@ public class VotingActivity extends AppCompatActivity {
         adapter = new Adapter(this,data);
         recyclerView.setAdapter(adapter);
         name=getIntent().getExtras().getString("username");
-        Log.d("aaaa",name);
+        Log.d("aaaaaa",name);
         questiontextview = findViewById(R.id.vote_textView);
-        question = questiontextview.getText().toString();
         db = new DatabaseFull(this);
         votebutton=findViewById(R.id.vote_button);
         adapter.setClickListener(new Adapter.ItemClickListener() {
             @Override
             public void onItemClick(String text) {
                 vote=text;
+                Log.d("cccccc",vote);
             }
         });
         votebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (vote!=null)
+                if (vote==null)
                 {
                     Toast.makeText(VotingActivity.this, "You need to vote!", Toast.LENGTH_SHORT).show();
                 }
@@ -60,6 +60,9 @@ public class VotingActivity extends AppCompatActivity {
                 {
                 votebutton.setVisibility(GONE);
                 question = questiontextview.getText().toString();
+//                Log.d("aaaaaaaa",name);
+//                Log.d("aaaaaaaa",question);
+                //Log.d("aaaaaaaa",vote);
                 db.insert(name,question,vote);
                 FragmentManager fm=getSupportFragmentManager();
                 ScoresFragment fragment=ScoresFragment.newInstance(vote,name);

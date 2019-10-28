@@ -27,9 +27,18 @@ public class Onedata {
         return id;
     }
 
-    public String getData() {
-        return data;
+    public String getQuestion() {
+        return question;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPoint() {
+        return point;
+    }
+
     public void setData(String data){
         this.data=data;
     }
@@ -37,4 +46,6 @@ public class Onedata {
     {
         this.id=id;
     }
+
+
 }

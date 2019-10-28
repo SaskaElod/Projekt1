@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
@@ -22,7 +23,7 @@ public class ScoresFragment extends Fragment {
     private RecyclerView recyclerView;
     private MyRecyclerViewAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    //private List<Onedata> datas;
+    private List<Onedata> datas;
 
     public ScoresFragment() {
         // Required empty public constructor
@@ -42,9 +43,14 @@ public class ScoresFragment extends Fragment {
         super.onCreate(savedInstanceState);
         //score=getArguments().getString("vote");
         //name=getArguments().getString("username");
-
-        db=new DatabaseFull(getContext());
-        //Log.d("aaaaaaaaaa",score);
+//        Log.d("aaaaaaa",score);
+        recyclerView= getView().findViewById(R.id.recyclerviewscores);
+        //recyclerView.findViewById(R.id.recyclerviewscores);
+        //recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        //db=new DatabaseFull(getContext());
+        datas=db.getAllData();
+        //adapter=new MyRecyclerViewAdapter(this,datas);
+        //Log.d("aaaaaaaaaa",datas);
         //Log.d("bbbbbbbbb",name);
 
     }
