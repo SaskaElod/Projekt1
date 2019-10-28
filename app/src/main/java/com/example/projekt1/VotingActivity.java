@@ -40,7 +40,6 @@ public class VotingActivity extends AppCompatActivity {
         name=getIntent().getExtras().getString("username");
         //Log.d("aaaa",name);
         questiontextview = findViewById(R.id.vote_textView);
-        question = questiontextview.getText().toString();
         db = new DatabaseFull(this);
         votebutton=findViewById(R.id.vote_button);
         adapter.setClickListener(new Adapter.ItemClickListener() {
@@ -59,6 +58,7 @@ public class VotingActivity extends AppCompatActivity {
                 else
                 {
                 votebutton.setVisibility(GONE);
+                question = questiontextview.getText().toString();
                 db.insert(name,question,vote);
                 FragmentManager fm=getSupportFragmentManager();
                 ScoresFragment fragment=ScoresFragment.newInstance(vote,name);
