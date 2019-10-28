@@ -56,7 +56,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             super(itemView);
             username = itemView.findViewById(R.id.username);
             question = itemView.findViewById(R.id.question);
-           // score = itemView.findViewById(R.id.point);
+            score = itemView.findViewById(R.id.answer);
             itemView.setOnClickListener(this);
         }
 
