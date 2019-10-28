@@ -54,15 +54,15 @@ public class DatabaseFull extends SQLiteOpenHelper {
         if (cursor != null) {
             cursor.moveToFirst();
         }
-        Onedata hobbie = new Onedata(
+        Onedata dates = new Onedata(
                 cursor.getInt(cursor.getColumnIndex(Onedata.question)),
                 cursor.getString(cursor.getColumnIndex(Onedata.point)));
 
         cursor.close();
-        return hobbie;
+        return dates;
     }
     public List<Onedata> getAllData() {
-        List<Onedata> hobbies = new ArrayList<>();
+        List<Onedata> Dates = new ArrayList<>();
         String selectQuery = "SELECT * FROM " + Onedata.name;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -71,10 +71,10 @@ public class DatabaseFull extends SQLiteOpenHelper {
                 Onedata dates = new Onedata();
                 dates.setId(cursor.getInt(cursor.getColumnIndex(Onedata.question)));
                 dates.setData(cursor.getString(cursor.getColumnIndex(Onedata.point)));
-                hobbies.add(dates);
+                Dates.add(dates);
             } while (cursor.moveToNext());
         }
         db.close();
-        return hobbies;
+        return Dates;
     }
 }

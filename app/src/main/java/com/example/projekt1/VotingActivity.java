@@ -38,7 +38,7 @@ public class VotingActivity extends AppCompatActivity {
         adapter = new Adapter(this,data);
         recyclerView.setAdapter(adapter);
         name=getIntent().getExtras().getString("username");
-        //Log.d("aaaa",name);
+        Log.d("aaaa",name);
         questiontextview = findViewById(R.id.vote_textView);
         question = questiontextview.getText().toString();
         db = new DatabaseFull(this);
