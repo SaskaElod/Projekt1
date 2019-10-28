@@ -2,6 +2,7 @@ package com.example.projekt1;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -41,5 +42,19 @@ public class DatabaseFull extends SQLiteOpenHelper {
         if(ins==-1)return true;
         else return false;
     }
-
+    public Onedata getData(long id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(Onedata.name,
+                new String[]{Onedata.question, Onedata.point},
+                Onedata.question + "=?",
+                new String[]{String.valueOf(id)}, null, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        Onedata hobbie = new Onedata(
+                cursor.getInt(cursor.getColumnIndex(Onedata.question)),
+                cursor.getString(cursor.getColumnIndex(Onedata.point)));
+        cursor.close();
+        return hobbie;
+    }
 }
