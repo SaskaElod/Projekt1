@@ -25,7 +25,7 @@ public class VotingActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    String vote,name,question;
+    String vote="",name,question;
     TextView questiontextview;
 
     @Override
@@ -46,12 +46,13 @@ public class VotingActivity extends AppCompatActivity {
             @Override
             public void onItemClick(String text) {
                 vote=text;
+                Log.d("aaaaaaaa",vote);
             }
         });
         votebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (vote!=null)
+                if (vote==null)
                 {
                     Toast.makeText(VotingActivity.this, "You need to vote!", Toast.LENGTH_SHORT).show();
                 }
@@ -59,6 +60,9 @@ public class VotingActivity extends AppCompatActivity {
                 {
                 votebutton.setVisibility(GONE);
                 question = questiontextview.getText().toString();
+//                Log.d("aaaaaaaa",name);
+//                Log.d("aaaaaaaa",question);
+                //Log.d("aaaaaaaa",vote);
                 db.insert(name,question,vote);
                 FragmentManager fm=getSupportFragmentManager();
                 ScoresFragment fragment=ScoresFragment.newInstance(vote,name);

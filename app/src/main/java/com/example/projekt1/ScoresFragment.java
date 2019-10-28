@@ -43,11 +43,14 @@ public class ScoresFragment extends Fragment {
         super.onCreate(savedInstanceState);
         //score=getArguments().getString("vote");
         //name=getArguments().getString("username");
-        recyclerView= recyclerView.findViewById(R.id.recyclerviewscores);
+//        Log.d("aaaaaaa",score);
+        //recyclerView= getView().findViewById(R.id.recyclerviewscores);
         //recyclerView.findViewById(R.id.recyclerviewscores);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        db=new DatabaseFull(getContext());
-        //Log.d("aaaaaaaaaa",score);
+        //recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        //db=new DatabaseFull(getContext());
+        //datas=db.getAllData();
+        //adapter=new MyRecyclerViewAdapter(this,datas);
+        //Log.d("aaaaaaaaaa",datas);
         //Log.d("bbbbbbbbb",name);
 
     }
