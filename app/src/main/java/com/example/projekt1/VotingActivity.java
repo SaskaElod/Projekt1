@@ -25,7 +25,7 @@ public class VotingActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    String vote,name,question;
+    String vote="",name,question;
     TextView questiontextview;
 
     @Override
@@ -60,10 +60,10 @@ public class VotingActivity extends AppCompatActivity {
                 {
                 votebutton.setVisibility(GONE);
                 question = questiontextview.getText().toString();
-                Log.d("aaaaaaaa",name);
-                Log.d("aaaaaaaa",question);
-                Log.d("aaaaaaaa",vote);
-                //db.insert(name,question,vote);
+//                Log.d("aaaaaaaa",name);
+//                Log.d("aaaaaaaa",question);
+                //Log.d("aaaaaaaa",vote);
+                db.insert(name,question,vote);
                 FragmentManager fm=getSupportFragmentManager();
                 ScoresFragment fragment=ScoresFragment.newInstance(vote,name);
                 fm.beginTransaction().replace(R.id.container,fragment).commit();
@@ -78,6 +78,7 @@ public class VotingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 votebutton.setVisibility(GONE);
+                db.insert(name,question,vote);
 
             }
         });

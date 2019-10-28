@@ -68,7 +68,11 @@ public class ScoresFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = view.findViewById(R.id.recyclerviewscores);
-        //db=new DatabaseFull(getContext());
-        //datas=db.getAllData();
+        db=new DatabaseFull(getContext());
+        datas=db.getAllData();
+        recyclerView= getView().findViewById(R.id.recyclerviewscores);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter=new MyRecyclerViewAdapter(getContext(),datas);
+        recyclerView.setAdapter(adapter);
     }
 }
