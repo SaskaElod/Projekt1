@@ -41,15 +41,17 @@ public class DatabaseFull extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insert(String data){
+    public boolean insert(String name,String question,String answer){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
-        contentValues.put(Onedata.name,data);
-        //contentValues.put(COLUMN3,questname);
-       // /contentValues.put(COLUMN4,answer);
-        long ins=db.insert(Onedata.TABLE_NAME,null,contentValues);
-        if(ins==-1)return true;
-        else return false;
+        contentValues.put(COLUMN_NAME,name);
+        contentValues.put(COLUMN_QUESTION,question);
+        contentValues.put(COLUMN_ANSWER,answer);
+       long result = db.insert(TABLE_NAME,null,contentValues);
+       if(result==-1)
+       {return false;}
+       else{return true;}
+
     }
     public Onedata getData(long id) {
         SQLiteDatabase db = this.getReadableDatabase();

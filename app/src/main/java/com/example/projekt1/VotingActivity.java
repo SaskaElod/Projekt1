@@ -63,7 +63,7 @@ public class VotingActivity extends AppCompatActivity {
 //                Log.d("aaaaaaaa",name);
 //                Log.d("aaaaaaaa",question);
                 //Log.d("aaaaaaaa",vote);
-                db.insert(name);
+                db.insert(name,question,vote);
                 FragmentManager fm=getSupportFragmentManager();
                 ScoresFragment fragment=ScoresFragment.newInstance(vote,name);
                 fm.beginTransaction().replace(R.id.container,fragment).commit();
@@ -78,6 +78,7 @@ public class VotingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 votebutton.setVisibility(GONE);
+                db.insert(name,question,vote);
 
             }
         });
