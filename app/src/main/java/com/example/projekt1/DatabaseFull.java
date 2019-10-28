@@ -21,31 +21,31 @@ public class DatabaseFull extends SQLiteOpenHelper {
 
 
 
-    public DatabaseFull(Context context){
+    public DatabaseFull (Context context){
         super(context,"Users.db",null,1);
     }
     @Override
-    public void onCreate(SQLiteDatabase db)
+    public void onCreate (SQLiteDatabase db)
     {
-        db.execSQL("Create table users_table(ID INTEGER primary key,username text ,questname text,answer string)");
+        db.execSQL ("Create table users_table (ID INTEGER PRIMARY KEY AUTOINCREMENT, username text PRIMARY KEY, questname text, answer text)");
     }
     @Override
-    public void onUpgrade(SQLiteDatabase db,int OldVersion,int newVersion){
-        db.execSQL("drop table if exists users_table");
+    public void onUpgrade (SQLiteDatabase db,int OldVersion,int newVersion){
+        db.execSQL ("drop table if exists users_table");
         this.onCreate(db);
     }
 
-    public boolean insert(String username,String questname,String answer){
+    public boolean insert (String username,String questname,String answer){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
         contentValues.put(COLUMN2,username);
         contentValues.put(COLUMN3,questname);
         contentValues.put(COLUMN4,answer);
-        long ins=db.insert("Users.db",null,contentValues);
+        long ins=db.insert("users_table",null,contentValues);
         if(ins==-1)return true;
         else return false;
     }
-    public Onedata getData(long id) {
+    public Onedata getData (long id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(Onedata.name,
                 new String[]{Onedata.question, Onedata.point},

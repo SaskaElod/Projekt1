@@ -25,7 +25,7 @@ public class VotingActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    String vote="",name,question;
+    String vote,name,question;
     TextView questiontextview;
 
     @Override
