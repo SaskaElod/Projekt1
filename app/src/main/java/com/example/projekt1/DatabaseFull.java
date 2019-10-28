@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class DatabaseFull extends SQLiteOpenHelper {
 
@@ -54,7 +57,24 @@ public class DatabaseFull extends SQLiteOpenHelper {
         Onedata hobbie = new Onedata(
                 cursor.getInt(cursor.getColumnIndex(Onedata.question)),
                 cursor.getString(cursor.getColumnIndex(Onedata.point)));
+
         cursor.close();
         return hobbie;
+    }
+    public List<Onedata> getAllHobbie() {
+        List<Onedata> hobbies = new ArrayList<>();
+        String selectQuery = "SELECT * FROM " + Onedata.name;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Onedata hobbie = new Onedata();
+                hobbie.setId(cursor.getInt(cursor.getColumnIndex(Onedata.question)));
+                hobbie.setData(cursor.getString(cursor.getColumnIndex(Onedata.point)));
+                hobbies.add(hobbie);
+            } while (cursor.moveToNext());
+        }
+        db.close();
+        return hobbies;
     }
 }
