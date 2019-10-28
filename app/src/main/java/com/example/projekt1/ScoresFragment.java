@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
 
 
 public class ScoresFragment extends Fragment {
@@ -21,6 +22,7 @@ public class ScoresFragment extends Fragment {
     private RecyclerView recyclerView;
     private MyRecyclerViewAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
+    //private List<Onedata> datas;
 
     public ScoresFragment() {
         // Required empty public constructor
@@ -38,8 +40,9 @@ public class ScoresFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        score=getArguments().getString("vote");
-        name=getArguments().getString("username");
+        //score=getArguments().getString("vote");
+        //name=getArguments().getString("username");
+
         db=new DatabaseFull(getContext());
         //Log.d("aaaaaaaaaa",score);
         //Log.d("bbbbbbbbb",name);
